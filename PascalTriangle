@@ -1,0 +1,21 @@
+class Solution(object):
+    def generate(self, numRows):
+        """
+        :type numRows: int
+        :rtype: List[List[int]]
+        """
+        if numRows<0 or numRows>30:
+            return []
+        masterrow=[]
+        if numRows>0:
+            masterrow.append([1])
+            if numRows>1:
+                for x in range(2,numRows+1):
+                    temprow=[1,1]
+                    if len(masterrow[x-2])>1:
+                        for y in range(x-2):
+                            tempsum=masterrow[x-2][y]+masterrow[x-2][y+1]
+                            temprow.insert(y+1,tempsum)
+                    masterrow.append(temprow)
+        return (masterrow)
+
