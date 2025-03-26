@@ -1,0 +1,19 @@
+class Solution(object):
+    def judgeCircle(self, moves):
+        posmov=["U","D","L","R"]
+        leng=len(moves)
+        ini=complex(0+0j)
+        for y in range(leng):
+            
+            if not (moves[y] in posmov or y>20000):
+                return False
+        else:
+            for x in range(leng):
+                if moves[x]=="U":ini=ini+1j
+                if moves[x]=="D":ini=ini-1j
+                if moves[x]=="L":ini=ini-1
+                if moves[x]=="R":ini=ini+1
+            if ini==0+0j:
+                return True
+            else: return False
+                
